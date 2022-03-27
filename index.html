@@ -1,7 +1,23 @@
 <!-- link style sheet -->
 <link rel="stylesheet" type="text/css" href="style.css">
 
+
+
 <body>
+
+	<nav id="navbar">
+		<header>
+			<h1>
+				Java Docs
+			</h1>
+		</header>
+		<a class="nav-link" href="#what_is_java">What is Java</a>
+		<a class="nav-link" href="#java_is_an_object_oriented_language">Java is an Object Oriented Language</a>
+		<a class="nav-link" href="#classes_and_objects">Classes and Objects</a>
+		<a class="nav-link" href="#objects_in_practice">Objects in Practice</a>
+		<a class="nav-link" href="#abstracts">Abstracts</a>
+	</nav>
+
 	<main id="main-doc">
 
 		<h1 id="main-title">
@@ -17,6 +33,11 @@
 			</header>
 			<p>
 				Java is a truly special language for many people, both because it is widely taught and because it is very powerful.
+				If you want to learn a first programming language, Java is a brilliant choice and I would highly recommend it!
+			</p>
+			<p>
+				Unlike some other coding languages, Java makes memory management much easier, and you don't have to worry about things like
+				memory leaks or garbage collection.
 			</p>
 		</section>
 
@@ -29,6 +50,21 @@
 			<p>
 				This means that Java functions by creating classes and objects.
 				Everything either has a is-a or has-a relationship with something else.
+			</p>
+
+			<p>
+				One of the most beautiful things about Object Orientated Languages is the
+				is the ability to model things similarly to how we perceive
+				them in our minds.
+			</p>
+
+			<p>
+				For example, let's say we have a car.
+				It has wheels, a seat, an engine, and so much more.
+				We can make each of these objects part of that car.
+				We can then make a car object that has these objects as parts.
+				In doing so, we can then model our perception of the car
+				through code.
 			</p>
 		</section>
 
@@ -43,20 +79,120 @@
 				Objects are like the actual things that are made from the classes.
 			</p>
 			<p>
-				We can instantiate objects by calling a class with the *new* keyword
+				We can instantiate objects by calling a class with the "new" keyword
 				and adding a parenthesis after the class name.
+			</p>
+			<p>
+				When we do this, Java actually allocates memory for the object.
+				In doing so, the object is placed into the heap.
+				The heap is a place where all objects are stored.
+			</p>
+			<p>
+				On the other hand, many of the variables we see in Java aren't actually objects.
+				Instead, they are simply "primitive variables", or "primitive types". 
+				Instead of being stored on the "heap" these primitive variables are stored on the "stack".
+			</p>
+			<p>
+				Here is an example of some primitive variables.
+			</p>
+			<code>
+				int x = 5;
+				int y = 10;
+				int z = x + y;
+			</code>
+			<p>
+				When the function these variables are created in
+				is called, the variables are placed on the stack.
+				When the function ends, the variables are removed from the stack.
+			</p>
+			<p>
+				Now if we tried to call these variables outside of the function,
+				we would get an error.
+			</p> 
+			<code>
+				{
+					int x = 5;
+					int y = 10;
+					int z = x + y;
+				}
+			</code>
+			<p>
+
+			</p>
+			<code>
+				System.out.println(x);
+				System.out.println(y);
+				System.out.println(z);
+			</code>
+			<p>
+				This would result in an error.
 			</p>
 		</section>
 
 		<section class="main-section" id="objects_in_practice">
 			<header>
 				<h2>
-					Objects in practice
+					Objects in Practice
 				</h2>
 			</header>
 			<p>
-				Here is a super basic example of what some code looks like with this tech.
+				Here is a super basic example of what some code looks like with this syntax.
 			</p>
+			<p>
+				<code>
+					String name = new String();
+				</code>
+			</p>
+
+			<p>
+				Here we called the String constructor from the String class.
+				In doing so, we created a new object. Just like we mentioned earlier,
+				this object was placed on the heap. Because of this, we can use the
+				object we created outside of the function it was originally
+				created in, even if the function has ended.
+			</p>
+			<p>
+				To destroy this object, we can simply remove all of our
+				references to it. This is done by setting "name" to null.
+				In some other languages we would be able to use the "delete" keyword,
+				but in Java we can't. The delete keyword doesn't actually exist
+				because the Java language uses something called a Garbage Collector.
+			</p>
+			<p>
+				Here are some other examples of things we would make objects.
+			</p>
+			<ul>
+				<li>
+					<code>
+						Dog dog = new Dog();
+					</code>
+				</li>
+				
+				<li>
+					<code>
+						Cat cat = new Cat();
+					</code>
+				</li>
+				
+				<li>
+					<code>
+						Router router = new Router();
+					</code>
+				</li>
+
+				<li>
+					<code>
+						Person person = new Person();
+					</code>
+				</li>
+
+				<li>
+					<code>
+						Car car = new Car();
+					</code>
+				</li>
+
+			</ul>
 		</section>
 
 		<section class="main-section" id="abstracts">
@@ -68,6 +204,44 @@
 			<p>
 				Abstracts are something a little bit unique.
 				While they are a natural extension of the idea of classes, they also break a lot of the rules.
+			</p>
+			<p>
+				Abstract classes are classes that cannot be instantiated.
+				They are meant to be extended by other classes.
+			</p>
+			<p>
+				This allows us to create parents of objects that
+				are incomplete in nature, meaning that they don't
+				have the full functionality of an object.
+			</p>
+			<p>
+				Here's an example of an abstract class.
+			</p>
+			<code>
+				abstract class Animal {
+					public abstract void makeSound();
+				}
+			</code>
+			<p>
+				See how the makeSound() method is abstract and
+				doesn't contain any code? This is because it is
+				not meant to be implemented alone. It is meant to
+				be extended by other classes.
+			</p>
+			<p>
+				Here's an example of what extending that abstract method
+				looks like.
+			</p>
+			<code>
+				class Cat extends Animal {
+					public void makeSound() {
+						System.out.println("Meow!");
+					}
+				}
+			</code>
+			<p>
+				Now when we call the makeSound() method on a Cat object,
+				we get the output "Meow!".
 			</p>
 		</section>
 
